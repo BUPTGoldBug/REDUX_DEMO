@@ -76,7 +76,7 @@ export default class UserListPage extends Component {
             } else {
                 if (userList.length > 0) {
                     //加载成功且不是空的
-                    return <FlatList data={userList} renderItem={this.renderUserList} />
+                    return <FlatList data={userList} renderItem={this.renderUserList} keyExtractor ={(item,index)=>(item.uid)} />
 
                 } else {
                     //成功加载，但是是空的
