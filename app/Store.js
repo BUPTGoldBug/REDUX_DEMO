@@ -3,8 +3,8 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
-import createLogger from 'redux-logger';
-import storage from './config/asyncStorageConf';
+import {createLogger} from 'redux-logger';
+
 
 import NavigatorReducer from './reducers/NavigatiorReducer';
 import SearchReducer from './reducers/SearchReducer';
@@ -19,7 +19,7 @@ const store = createStore(
         search: SearchReducer,
     }),
     {},  //initialState
-    applyMiddleware(thunk, promiseMiddleware(), logger,navigator_midderware) //传入所有的
+    applyMiddleware(thunk, promiseMiddleware(),navigator_midderware, logger) //传入所有的
 );
 
 export default store;

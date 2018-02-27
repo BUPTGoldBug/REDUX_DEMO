@@ -9,7 +9,7 @@ export const URL = {
     
 
 };
-export const ROOT_SERVER_URL = "http://192.168.116.2/";
+export const ROOT_SERVER_URL = "http://192.168.116.2:8080/";
 
 export const route_pathName = {
     userDetailPage:"userDetailPage",

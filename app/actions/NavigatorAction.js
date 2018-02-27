@@ -2,7 +2,7 @@
 
 import * as types from '../actions/ActionTypes'
 
-import { NavigationActions }from 'React-Navigation'
+import { NavigationActions }from 'react-navigation'
 export const push = function (routeName,params){
     return {
         type:types.PUSH,

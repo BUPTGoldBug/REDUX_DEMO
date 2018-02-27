@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import store from './createStore';
+import store from './Store';
 import NavigationContainer from './containers/NavigationPageContainer'
 import {
   Platform,
@@ -18,8 +18,8 @@ import {
 
 export default class App extends Component {
   render() {
-    <Provider store = { store}>
+   return ( <Provider store = { store}>
       <NavigationContainer />
-    </Provider>
+    </Provider>);
   }
 }

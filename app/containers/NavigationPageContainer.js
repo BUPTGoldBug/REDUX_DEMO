@@ -1,18 +1,16 @@
-'use stric'
-import {connect} from 'react-redux';
+'use stric';
+import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import AppNavigator from '../components/NavigationPage'
-import {pop,push,reset} from "../actions/NavigatorAction"
+import AppNavigator from '../components/NavigationPage';
+import {pop,push,reset} from "../actions/NavigatorAction";
 
 
 
 export default  NavigationContainer = connect(
-    (state)=>({
+    (state)=>(Object.assign({
         navigator:state.navigator
-    }),    
-    (dispatch) => (bindActionCreators({
-        push,
-        pop,
-        reset
-    }, dispatch))
+    })),    
+    (dispatch) => {
+        return Object.assign({dispatch: dispatch},{actions: bindActionCreators({pop,push,reset}, dispatch)});
+    }
 )(AppNavigator);

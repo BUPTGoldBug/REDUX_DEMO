@@ -11,6 +11,7 @@ const initialState = {
 
 };
 export  default   function SearchReducer (state = initialState, action = {}){
+   
        switch(action.type){
             case types.SEARCH_USER_PENDING :{
                 //正在加载
@@ -55,11 +56,12 @@ export  default   function SearchReducer (state = initialState, action = {}){
             }
             case types.DETAIL_USER_FULFILLED:{
                     //成功加载
+                console.log(action.payload);
                    let newState = {
                     ...state,
                     isDetailLoading:false,
                     isDetailLoadFaild:false,
-                    userDetail:action.payload.userDetail,
+                    userDetail:action.payload,
                     //从字段取的
                 };
                   return newState
@@ -70,7 +72,7 @@ export  default   function SearchReducer (state = initialState, action = {}){
                     ...state,
                     isDetailLoading:false,
                     isDetailLoadFaild:true,
-                    userDetail:"",//还没有失败
+                    userDetail:{},
                 };
                   return newState
             }
