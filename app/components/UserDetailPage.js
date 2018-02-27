@@ -32,6 +32,7 @@ export default class UserDetailPage extends Component {
         console.log(props);
 
         this.renderField = this.renderField.bind(this);
+     
     }
 
     componentWillMount() {
@@ -71,31 +72,22 @@ export default class UserDetailPage extends Component {
                         <ListItem>
                             <Left><Text>姓名:</Text></Left>
                             {
-                               // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.uname}</Text></Body>) }
-                               ()=>{
-                                   console.log("userDetail.uname:"+userDetail.uname);
-                                   if(isDetailLoading){
-                                        return (<Icon1 name="spinner" />);
-                                   }else if(isDetailLoadFaild){
-
-                                       return ( <Text>加载失败</Text>);
-                                   }else {
-                                       return (<Text>{userDetail.uname}</Text>);
-                                   }
-                                 
-                               }
+                                // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.uname}</Text></Body>) }
+                                this.renderField(UserDetailField.NAME_FIELD)
                             }
                         </ListItem>
                         <ListItem>
                             <Left><Text>身份:</Text></Left>
                             {
-                               // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.position}</Text></Body>) }
+                                // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.position}</Text></Body>) }
+                                 this.renderField(UserDetailField.POSITION_FILED)
                             }
                         </ListItem>
                         <ListItem>
                             <Left><Text>密码:</Text></Left>
                             {
-                               // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.password}</Text></Body>) }
+                                this.renderField(UserDetailField.PWD_FILED)
+                                // () => { return ((isDetailLoading == true) ? <Body><Icon1 name="spinner" /></Body> : (isDetailLoadFaild == true) ? <Body><Text>加载失败</Text></Body> : <Body><Text>{userDetail.password}</Text></Body>) }
                             }
                         </ListItem>
                     </List>
@@ -104,25 +96,31 @@ export default class UserDetailPage extends Component {
         );
     }
 
+
     renderField(type) {
-        //用来判断名字是否出现，如果没有出现，就显示圆圈
         const { isDetailLoading, isDetailLoadFaild, userDetail } = this.props;
         const { userName } = this.props.navigation.state.params;//取出userName
-        let element = null;
-        //细节
-        if (isDetailLoading == true) {
-            element = (<Icon1 name="spinner" />)
-        } else if (isDetailLoadFaild == false) {
+        let temp = null;
+        if(type == UserDetailField.NAME_FIELD){
+            temp = userDetail.uname;
 
-            element = (<Icon1 name="spinner" />)
-
-        } else {
-            return (
-                <Body><Text>加载失败</Text></Body>
-            );
+        }else if(type == UserDetailField.POSITION_FILED){
+            temp = userDetail.position;
+        }else {
+            temp = userDetail.password;
         }
 
 
+
+
+        if (isDetailLoading) {
+            return (<Body><Icon1 name="spinner" /></Body>);
+        } else if (isDetailLoadFaild) {
+
+            return (<Body><Text>加载失败</Text></Body>);
+        } else {
+            return (<Body><Text>{temp}</Text></Body>);
+        }
 
     }
 

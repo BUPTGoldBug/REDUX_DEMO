@@ -1,7 +1,7 @@
 export const UserDetailField = {
         NAME_FIELD:1,
-        DETAILE_FIELD:2,
-
+        PWD_FILED:2,
+        POSITION_FILED:3
 };
 export const URL = {
     getPeopleList:"getPeopleList",
