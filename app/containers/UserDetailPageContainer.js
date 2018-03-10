@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import UserDetailPage from "../components/UserDetailPage"
 import {checkUserDetail} from "../actions/SearchAction"
-import {pop} from "../actions/NavigatorAction"
+import {pop,push,goBack} from "../actions/NavigatorAction"
 export default   connect(
     (state)=>{
         console.log("UserDetailPageContainer state");
@@ -19,5 +19,5 @@ export default   connect(
     (dispatch)=>{
          console.log("UserDetailPageContainer dispatch");
           console.log(dispatch);
-        return (Object.assign({dispatch: dispatch}, {actions:bindActionCreators({pop,checkUserDetail}, dispatch)}))}
+        return (Object.assign({dispatch: dispatch}, {actions:bindActionCreators({pop,push,goBack,checkUserDetail}, dispatch)}))}
 )(UserDetailPage);

@@ -22,7 +22,7 @@ import {
     ListItem
 } from 'native-base';
 import Icon1 from 'react-native-vector-icons/FontAwesome'
-import { UserDetailField } from "../util/Constant"
+import { UserDetailField,route_pathName } from "../util/Constant"
 
 export default class UserDetailPage extends Component {
 
@@ -53,7 +53,7 @@ export default class UserDetailPage extends Component {
                     <Left>
                         <Button transparent onPress={() => {
                             //调用返回函数
-                            this.props.actions.pop();
+                            this.props.actions.goBack(route_pathName.userListPage);
                         }}>
                             <Icon name='ios-arrow-back' />
                         </Button>

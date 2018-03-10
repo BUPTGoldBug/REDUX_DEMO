@@ -27,7 +27,7 @@ export const reset = function(){ // 登出时候出现
         type:types.RESET,
         payload:{}
     }
-
+}
 export const goBack =function (routeName){
 
     return {
@@ -38,5 +38,4 @@ export const goBack =function (routeName){
 
     }
 
-}
 }
