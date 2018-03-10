@@ -22,3 +22,4 @@ export const DETAIL_USER_REJECTED = 'DETAIL_USER_REJECTED';
 export const PUSH = "push";
 export const POP = "pop";
 export const RESET = "RESET";//登出的时候使用
+export const GOBACK = "GOBACK";//

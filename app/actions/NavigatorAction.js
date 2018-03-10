@@ -28,4 +28,15 @@ export const reset = function(){ // 登出时候出现
         payload:{}
     }
 
+export const goBack =function (routeName){
+
+    return {
+        type:types.GOBACK,
+        payload:{
+            routeName:routeName,
+        }
+
+    }
+
+}
 }

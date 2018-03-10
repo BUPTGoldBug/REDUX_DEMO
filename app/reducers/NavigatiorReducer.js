@@ -56,6 +56,20 @@ export  default   function NavigatorReducer (state = init_state, action = {}){
             });
             return newState ;
         }
+        case types.GOBACK:{
+            for(let i = state.index;i>=0;i--){
+                let routeName = state.routes[i].routeName;
+                if( routeName == action.payload.routeName){
+                    let key = state.routes[i].key;
+                    let backToAction = NavigationActions.back(key);
+                    let newState = Navigator_.router.getStateForAction(backToAction,state);
+                    return newState;
+                }
+
+            }
+           return state;
+
+        }
         default:{
             //什么都没有，应该原state
             console.log("default!!!!!!!!!")
